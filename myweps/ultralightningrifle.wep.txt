@@ -1,0 +1,38 @@
+#define init
+global.sprUltraLightningRifle = sprLightningRifle
+
+#define weapon_name
+return "ULTRA LIGHTNING RIFLE";
+
+#define weapon_sprt
+image_blend = c_lime
+return global.sprUltraLightningRifle;
+
+#define weapon_type
+return 3;
+
+#define weapon_auto
+return false;
+
+#define weapon_load
+return 5;
+
+#define weapon_cost
+return 5;
+
+#define weapon_swap
+return sndSwapPistol;
+
+#define weapon_area
+return 10;
+
+#define weapon_text
+return "ASTRAL DESTRUCTION";
+
+#define weapon_fire
+instance_create(x,y,Lightning) {
+	team = other.team
+	image_blend = c_lime;
+	damage = 30;
+	with (instance_create(x, y, LightningSpawn)) image_angle = other.image_angle;
+}

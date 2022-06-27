@@ -1,0 +1,31 @@
+#define weapon_name
+return "GOLDEN LONG SWORD";
+#define weapon_type
+return 0;
+#define weapon_auto
+return 0;
+#define weapon_cost
+return 0;
+#define weapon_load
+return 18;
+#define weapon_sprt
+image_blend = c_yellow;
+return sprJackHammer;
+#define weapon_area
+return 10;
+#define weapon_swap
+return sndSwapHammer;
+#define weapon_text
+return "storm digger";
+#define weapon_fire
+wepangle = -wepangle
+with (instance_create(x + lengthdir_x(5, gunangle), y + lengthdir_y(5, gunangle), Slash)) {
+	image_blend = c_olive
+	image_xscale = 3
+	image_yscale = 0.35
+	damage = 14
+	motion_add(other.gunangle,2.6);
+	image_angle = direction;
+	team = other.team;
+	creator = other;
+}

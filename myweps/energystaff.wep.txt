@@ -1,0 +1,23 @@
+#define init
+global.sprEnergyStaff = sprite_add_weapon("Energy Staff.png", 15, 10);
+#define weapon_name
+return "ENERGY STAFF";
+#define weapon_type
+return 5;
+#define weapon_auto
+return 1;
+#define weapon_cost
+return 0;
+#define weapon_load
+return 6;
+#define weapon_sprt
+return global.sprEnergyStaff;
+#define weapon_area
+return 10;
+#define weapon_swap
+return sndSwapHammer;
+#define weapon_text
+return "storm digger";
+#define weapon_fire
+mod_script_call("mod", "My Wep Tools", "create_wizard_shot",  1)
+mod_script_call("mod", "My Wep Tools", "create_wizard_shot", -1)

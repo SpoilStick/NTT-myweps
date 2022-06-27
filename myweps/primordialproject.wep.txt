@@ -1,0 +1,33 @@
+#define weapon_name
+return "PRIMORDIAL PROJECT";
+
+#define weapon_sprt
+image_blend = c_purple;
+return sprPlasmaMinigun;
+
+#define weapon_type
+return 5;
+
+#define weapon_auto
+return false;
+
+#define weapon_load
+return 400;
+
+#define weapon_cost
+return 10;
+
+#define weapon_swap
+return sndSwapPistol;
+
+#define weapon_area
+return 10;
+
+#define weapon_text
+return "JUST STUNNED";
+
+#define weapon_fire
+instance_create(x,y,Shell) {
+motion_add(point_direction(x,y,mouse_x,mouse_y)+other.right*100+random(50)-25,2+random(5))
+}
+mod_script_call("mod", "My Wep Tools", "primordial_project_destroy", 10, 0, 10)

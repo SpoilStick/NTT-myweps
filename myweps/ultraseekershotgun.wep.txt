@@ -1,0 +1,34 @@
+#define init
+global.sprUltraSeekerPistol = sprSeekerPistol
+
+#define weapon_name
+return "ULTRA SEEKER PISTOL";
+
+#define weapon_sprt
+image_blend = c_lime;
+return global.sprUltraSeekerPistol;
+
+#define weapon_type
+return 3;
+
+#define weapon_auto
+return false;
+
+#define weapon_load
+return 20;
+
+#define weapon_cost
+return 5;
+
+#define weapon_swap
+return sndSwapPistol;
+
+#define weapon_area
+return 10;
+
+#define weapon_text
+return "ASTRAL DESTRUCTION";
+
+#define weapon_fire
+repeat(8)
+mod_script_call("mod", "My Wep Tools", "create_ultra_seeker", 10, 0, 10)

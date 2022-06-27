@@ -1,0 +1,30 @@
+#define weapon_name
+return "BLOOD LONG SWORD";
+#define weapon_type
+return 0;
+#define weapon_auto
+return 0;
+#define weapon_cost
+return 0;
+#define weapon_load
+return 26;
+#define weapon_sprt
+image_blend = c_red;
+return sprJackHammer;
+#define weapon_area
+return 10;
+#define weapon_swap
+return sndSwapHammer;
+#define weapon_text
+return "storm digger";
+#define weapon_fire
+wepangle = -wepangle
+with (instance_create(x + lengthdir_x(5, gunangle), y + lengthdir_y(5, gunangle), BloodSlash)) {
+	image_xscale = 2.4
+	image_yscale = 0.45
+	damage = 22
+	motion_add(other.gunangle,2.45);
+	image_angle = direction;
+	team = other.team;
+	creator = other;
+}

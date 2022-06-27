@@ -1,0 +1,36 @@
+/loadwep ultraflamecannon.wep
+/loadwep ultralightningrifle.wep
+/loadwep ultralightningshovel.wep
+/loadwep ultraseekershotgun.wep
+/loadwep IDPDDeathCannon.wep
+/loadwep bubblecannon.wep
+/loadwep bulletcannon.wep
+/loadwep superbulletcannon.wep
+/loadwep ultrabulletcannon.wep
+/loadwep superultrabulletcannon.wep
+/loadwep extremesuperultrabulletcannon.wep
+/loadwep bulletturret.wep
+/loadwep randomturret.wep
+/loadwep bulletcannonturret.wep
+/loadwep turretcannon.wep
+/loadwep turretcannonturret.wep
+/loadwep smallproject.wep
+/loadwep scienceproject.wep
+/loadwep bigproject.wep
+/loadwep primordialproject.wep
+/loadwep psybouncershotgun.wep
+/loadwep bulletcannonsword.wep
+/loadwep longsword.wep
+/loadwep goldenlongsword.wep
+/loadwep lightninglongsword.wep
+/loadwep triplegoldenlongsword.wep
+/loadwep bloodlongsword.wep
+/loadwep energylongsword.wep
+/loadwep superlongsword.wep
+/loadwep energystaff.wep
+/loadwep staffofthecosmicwhole.wep
+/loadwep firesprayspell.wep
+/loadwep elementaldetonationspell.wep
+/loadwep supersword.mod
+/loadmod My Wep Tools.mod
+/loadmod More Chests.mod

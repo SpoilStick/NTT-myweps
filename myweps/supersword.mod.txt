@@ -1,0 +1,75 @@
+#define init
+global.sprSplendorSword = sprite_add_weapon("Sword Of Splendor.png", 15, 10);
+global.sprPurpleBolt = sprite_add("PurpleBolt.png", 1, 28, 6.5);
+#define weapon_name
+return "SUPER SWORD";
+#define weapon_type
+return 0;
+#define weapon_auto
+return 1;
+#define weapon_cost
+return 0;
+#define weapon_load
+return 12;
+#define weapon_sprt
+return global.sprSplendorSword;
+#define weapon_area
+return 10;
+#define weapon_swap
+return sndSwapHammer;
+#define weapon_text
+return "storm digger";
+#define weapon_fire
+with instance_create(x, y, CustomProjectile) {
+	motion_set(other.gunangle, 6)
+	sprite_index = global.sprPurpleBolt
+	image_angle = direction
+	damage = 45
+	team = other.team
+	creator = other
+	image_xscale = 0.6
+	image_yscale = 0.6
+}
+with instance_create(x, y, CustomProjectile) {
+	motion_set(other.gunangle + 8, 6)
+	sprite_index = global.sprPurpleBolt
+	image_angle = direction
+	damage = 45
+	team = other.team
+	creator = other
+	image_xscale = 0.6
+	image_yscale = 0.6
+}
+with instance_create(x, y, CustomProjectile) {
+	motion_set(other.gunangle + 16, 6)
+	sprite_index = global.sprPurpleBolt
+	image_angle = direction
+	damage = 45
+	team = other.team
+	creator = other
+	image_xscale = 0.6
+	image_yscale = 0.6
+}
+with instance_create(x, y, CustomProjectile) {
+	motion_set(other.gunangle - 8, 6)
+	sprite_index = global.sprPurpleBolt
+	image_angle = direction
+	damage = 45
+	team = other.team
+	creator = other
+	image_xscale = 0.6
+	image_yscale = 0.6
+}
+with instance_create(x, y, CustomProjectile) {
+	motion_set(other.gunangle - 16, 6)
+	sprite_index = global.sprPurpleBolt
+	image_angle = direction
+	damage = 45
+	team = other.team
+	creator = other
+	image_xscale = 0.6
+	image_yscale = 0.6
+}
+wepangle = -wepangle;
+motion_add(other.gunangle, 6);
+weapon_post(-4, 12, 1);

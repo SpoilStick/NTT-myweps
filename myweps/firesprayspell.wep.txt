@@ -1,0 +1,44 @@
+#define init
+global.sprFireSpraySpell = sprite_add_weapon("Fire Spray Spell.png", 15, 10);
+global.sprFireBolt = sprite_add("FireBolt.png", 1, 28, 6.5);
+#define weapon_name
+return "FIRE SPRAY SPELL";
+#define weapon_type
+return 5;
+#define weapon_auto
+return 0;
+#define weapon_cost
+return 0;
+#define weapon_load
+return 20;
+#define weapon_sprt
+return global.sprFireSpraySpell;
+#define weapon_area
+return 10;
+#define weapon_swap
+return sndSwapHammer;
+#define weapon_text
+return "storm digger";
+#define weapon_fire
+if (GameCont.rad >= 12) {
+	GameCont.rad -= 12;
+	for (var i = 0; i <= 360; i += 18) {
+		with instance_create(mouse_x[index], mouse_y[index], CustomProjectile) {
+			motion_set(i, 12)
+			sprite_index = global.sprFireBolt
+			image_angle = direction
+			damage = 3 + irandom_range(-1, 1)
+			team = other.team
+			creator = other
+			image_xscale = 0.5
+			image_yscale = 0.5
+		}
+	}
+}
+else{
+	sound_play(sndUltraEmpty)
+	with instance_create(x,y,PopupText)
+	{
+		mytext = "NOT ENOUGH MAGIC..."
+	}
+}

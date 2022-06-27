@@ -1,0 +1,154 @@
+#define init
+global.sprGeneralFlameCannon = sprite_add_base64("
+iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwgAADsIBFShKgAAAABl0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC4xNzNun2MAAAEHSURBVEhLxZOxDcJQDERZgQqJho4G0bJEJDZgCeZixw8X6UUX55IABSA9/GOf7QP9bFprfyUmK6+PvlapfU7Vij7vojkk3naPdri3PvqZyMCEatJ5D/qJeA410OzD1kwoR9370A6ihGqOcufTZZb97jjp0zNGXYtuJHKnuESI7trdFql6X+qgGwm1uEbVnLTUeVev2mAAE/oLKzgW9TkhTVpYiQbSQOddAylfiQaEBnB2yCuukRZWNGtkABMaQDHlfVFCGkf3iEtdL3g/Oy2qgzynqF+QIhqfp2WqE7ng6IbloALDHFzrrJigVufN0dddDFXI6+g1tEA+1ZaISeeboZ8Qk7+jbZ4MXTDY3mRpgQAAAABJRU5ErkJggg==
+", 1 , 16, 8);
+
+#define weapon_name
+return "IDPD DEATH CANNON";
+
+#define weapon_sprt
+return global.sprGeneralFlameCannon;
+
+#define weapon_type
+return 4;
+
+#define weapon_auto
+return false;
+
+#define weapon_load
+return 20;
+
+#define weapon_cost
+return 10;
+
+#define weapon_swap
+return sndSwapPistol;
+
+#define weapon_area
+return 10;
+
+#define weapon_text
+return "ASTRAL DESTRUCTION";
+
+#define weapon_fire
+sound_play(sndFlameCannon)
+repeat(3)
+with instance_create(Player.x+lengthdir_x(sprite_height-6,point_direction(Player.x,Player.y,mouse_x,mouse_y)),Player.y+lengthdir_y(sprite_height-6,point_direction(Player.x,Player.y,mouse_x,mouse_y)),CustomObject) {
+	{
+	team = other.team
+	speed = 2.5
+	dir = random(359)
+	damage = 60
+	timer = 60
+	dirfac = random(359)
+	dirfac2 = dirfac - 180
+	sprite_index = sprUltraShell
+	image_index = 0
+	direction = point_direction(x,y,mouse_x,mouse_y)
+	do
+	{
+			if place_meeting(x+3,y,Wall) || place_meeting(x-3,y,Wall)
+			{
+				hspeed *= -1
+			}
+			if place_meeting(x,y+3,Wall) || place_meeting(x,y-3,Wall)
+			{
+				vspeed *= -1
+			}
+			scale = random_range(0.9,1.1)
+			image_speed = 0
+			dirfac += 10
+			image_xscale = 1.2*scale
+			image_yscale = 1.2*scale
+			if speed > 1.0000000001
+			{
+				speed /= 1.1		
+				if x = xprevious && y = yprevious && timer > 1
+				{
+						sound_play(sndUltraShotgun)
+						with instance_create(x,y,IDPDBullet)
+						{
+							team = other.team
+							if instance_exists(CustomObject)
+							{
+								direction = instance_nearest(x,y,CustomObject).dirfac
+							}
+							else
+							{
+								instance_destroy()
+							}
+							speed = 3
+							image_angle = direction
+						}
+						with instance_create(x,y,IDPDBullet)
+						{
+							team = other.team
+							if instance_exists(CustomObject)
+							{
+								direction = instance_nearest(x,y,CustomObject).dirfac
+							}
+							else
+							{
+								instance_destroy()
+							}
+							speed = 3
+							image_angle = direction
+						}
+						with instance_create(x,y,IDPDBullet)
+						{
+							team = other.team
+							if instance_exists(CustomObject)
+							{
+								direction = instance_nearest(x,y,CustomObject).dirfac2
+							}
+							else
+							{
+								instance_destroy()
+							}
+							speed = 3
+							image_angle = direction
+						}
+						with instance_create(x,y,IDPDBullet)
+						{
+							team = other.team
+							if instance_exists(CustomObject)
+							{
+								direction = instance_nearest(x,y,CustomObject).dirfac2
+							}
+							else
+							{
+								instance_destroy()
+							}
+							speed = 3
+							image_angle = direction
+						}
+				}
+					timer -= 1
+					if timer <= 0
+					{
+						instance_destroy()
+					}
+			}
+			else {
+				repeat(10)
+				with instance_create(x,y,IDPDBullet) {
+					team = other.team
+					if instance_exists(CustomObject)
+					{
+						direction = instance_nearest(x,y,CustomObject).dirfac1
+					}
+					else
+					{
+						instance_destroy()
+					}
+					speed = 3
+					image_angle = direction
+					dirfac += 36
+					
+				}
+			}
+		wait 2
+	}while (instance_exists(self))
+	}
+}
+wkick = 3

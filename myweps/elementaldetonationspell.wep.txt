@@ -1,0 +1,44 @@
+#define init
+global.sprElementalDetonationSpell = sprite_add_weapon("Elemental Detonation Spell.png", 15, 10);
+global.sprPurpleBolt = sprite_add("PurpleBolt.png", 1, 28, 6.5);
+#define weapon_name
+return "ELEMENTAL DETONATION SPELL";
+#define weapon_type
+return 5;
+#define weapon_auto
+return 0;
+#define weapon_cost
+return 0;
+#define weapon_load
+return 19;
+#define weapon_sprt
+return global.sprElementalDetonationSpell;
+#define weapon_area
+return 10;
+#define weapon_swap
+return sndSwapHammer;
+#define weapon_text
+return "storm digger";
+#define weapon_fire
+if (GameCont.rad >= 32) {
+	GameCont.rad -= 32;
+	for (var i = 0; i <= 360; i += 18) {
+		with instance_create(mouse_x[index], mouse_y[index], CustomProjectile) {
+			motion_set(i, 12)
+			sprite_index = global.sprPurpleBolt
+			image_angle = direction
+			damage = 10 + irandom_range(-2, 2)
+			team = other.team
+			creator = other
+			image_xscale = 0.5
+			image_yscale = 0.5
+		}
+	}
+}
+else{
+	sound_play(sndUltraEmpty)
+	with instance_create(x,y,PopupText)
+	{
+		mytext = "NOT ENOUGH MAGIC..."
+	}
+}

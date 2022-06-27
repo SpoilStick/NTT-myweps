@@ -1,0 +1,38 @@
+#define weapon_name
+return "ULTRA FLAME CANNON";
+
+#define weapon_sprt
+image_blend = c_lime;
+return sprFlameCannon;
+
+#define weapon_type
+return 4;
+
+#define weapon_auto
+return false;
+
+#define weapon_load
+return 20;
+
+#define weapon_cost
+return 10;
+
+#define weapon_swap
+return sndSwapPistol;
+
+#define weapon_area
+return 10;
+
+#define weapon_text
+return "ASTRAL DESTRUCTION";
+
+#define weapon_fire
+sound_play(sndFlameCannon)
+repeat(3)
+with instance_create(Player.x+lengthdir_x(sprite_height-6,point_direction(Player.x,Player.y,mouse_x,mouse_y)),Player.y+lengthdir_y(sprite_height-6,point_direction(Player.x,Player.y,mouse_x,mouse_y)),FlameBall)
+{
+	motion_add(point_direction(x,y,mouse_x,mouse_y)+random_range(-35,35)*other.accuracy,2+random(15))
+	image_angle = direction
+	team = other.team
+}
+wkick = 3

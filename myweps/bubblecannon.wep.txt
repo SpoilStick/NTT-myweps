@@ -1,0 +1,40 @@
+#define weapon_name
+return "BUBBLE CANNON";
+
+#define weapon_sprt
+return sprPopoPlasmaMinigun;
+
+#define weapon_type
+return 4;
+
+#define weapon_auto
+return true;
+
+#define weapon_load
+return 10;
+
+#define weapon_cost
+return 1;
+
+#define weapon_swap
+return sndSwapPistol;
+
+#define weapon_area
+return 10;
+
+#define weapon_text
+return "ASTRAL DESTRUCTION";
+
+#define weapon_fire
+sound_play(sndFlameCannon)
+repeat(1 + random(15))
+with instance_create(Player.x+lengthdir_x(sprite_height-6,point_direction(Player.x,Player.y,mouse_x,mouse_y)),Player.y+lengthdir_y(sprite_height-6,point_direction(Player.x,Player.y,mouse_x,mouse_y)),AllyBullet) {
+	sprite_index = sprIDPDPortalClose
+	image_xscale = random_range(0.5, 0.9);
+	image_yscale = image_xscale;
+	damage = 3;
+	motion_add(other.gunangle + random_range(-25, 25), 1 + random(7));
+	image_angle = random(360);
+	team = other.team;
+	creator = other;
+}

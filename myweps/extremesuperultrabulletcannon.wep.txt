@@ -1,0 +1,33 @@
+#define weapon_name
+return "EXTREME SUPER ULTRA BULLET CANNON";
+
+#define weapon_sprt
+image_blend = c_black;
+return sprSuperFlakCannon;
+
+#define weapon_type
+return 1;
+
+#define weapon_auto
+return false;
+
+#define weapon_load
+return 100;
+
+#define weapon_cost
+return 50;
+
+#define weapon_swap
+return sndSwapPistol;
+
+#define weapon_area
+return 10;
+
+#define weapon_text
+return "ASTRAL DESTRUCTION (THIS IS RIDICULOUS)";
+
+#define weapon_fire
+instance_create(x,y,Shell) {
+motion_add(point_direction(x,y,mouse_x,mouse_y)+other.right*100+random(50)-25,2+random(5))
+}
+mod_script_call("mod", "My Wep Tools", "create_extreme_super_ultra_bullet_cannon", 10, 0, 10)
